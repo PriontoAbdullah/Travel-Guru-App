@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
+import { UserContext } from "../../App";
 import './Header.css';
-
 
 const Header = () => {
 
   const location = useLocation();
+  const {loggedInUser, setLoggedInUser} = useContext(UserContext);
 
   return (
     <Container>
@@ -31,7 +32,16 @@ const Header = () => {
             <Nav.Link as={Link} className="px-4" to="/">Blog</Nav.Link>
             <Nav.Link as={Link} className="px-4" to="/">Contact</Nav.Link>
            
+
+
+                {loggedInUser.isSignedIn ? (
+              <>
+                <Nav.Link className="px-4 font-weight-bold" >{loggedInUser.name ? loggedInUser.name.split(" ").slice(0, 1) : "User"}</Nav.Link>
+                <Nav.Link className="px-4" onClick={() => setLoggedInUser({})} >Logout</Nav.Link>
+              </>
+            ) : (
                 <Nav.Link as={Link} className="px-4" to="/login">Login</Nav.Link>
+              )}
              
           </Nav>
         </Navbar.Collapse>

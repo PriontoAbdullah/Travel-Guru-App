@@ -38,3 +38,7 @@
 .ml-auto.header-nav2.navbar-nav a:hover {
 	color: #ffc107;
 }
+
+.ml-auto.header-nav2.navbar-nav a:focus {
+	color: #fff;
+}
