@@ -3,14 +3,13 @@ import { Button, Col, Container, Jumbotron, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 // Import Swiper React components
 import SwiperCore, { A11y, Autoplay, Navigation, Pagination, Scrollbar } from 'swiper';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/scrollbar/scrollbar.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper.scss';
+// Import Swiper styles
+import "swiper/swiper-bundle.min.css";
 import locations from '../../fakeData/AllLocation';
 import './Home.css';
 import LocationItem from './LocationItem';
+
 
 // Install Swiper components
 SwiperCore.use([ Navigation, Pagination, Scrollbar, A11y, Autoplay ]);
@@ -25,7 +24,7 @@ const Home = () => {
 	// Loading all places
 	useEffect(
 		() => {
-			const activeItem = locations.find((loctaion, index) => index.toString() === slideIndex.toString());
+			const activeItem = locations.find((location, index) => index.toString() === slideIndex.toString());
 			setBooking(activeItem);
 		},
 		[ slideIndex ]
