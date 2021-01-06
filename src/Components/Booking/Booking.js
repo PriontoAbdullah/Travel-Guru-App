@@ -1,5 +1,5 @@
 import { addDays } from 'date-fns';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Card, Col, Container, Jumbotron, Row } from 'react-bootstrap';
 import ReactDatePicker from 'react-datepicker';
 // importing datepicker css
@@ -12,11 +12,9 @@ import './Booking.css';
 
 const Booking = () => {
 	const { id } = useParams();
-	const { setBookingInfo } = useContext(UserContext);
+	const { setBookingInfo, selectedPlace, setSelectedPlace } = useContext(UserContext);
 
 	const history = useHistory();
-
-	const [ selectedPlace, setSelectedPlace ] = useState({});
 
 	// hooks for react-hooks-form
 	const { register, handleSubmit, errors, control, getValues } = useForm({});
@@ -27,7 +25,7 @@ const Booking = () => {
 			const bookingLocation = locations.find((location) => location.id.toString() === id);
 			setSelectedPlace(bookingLocation);
 		},
-		[ id ]
+		[ id, setSelectedPlace ]
 	);
 
 	// submitted booking data

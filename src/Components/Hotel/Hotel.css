@@ -1,0 +1,10 @@
+.hotel-img {
+  width: 100%;
+  height: 100%;
+  margin: 5px;
+}
+
+.hotel-info p {
+  line-height: 12px;
+  text-align: justify;
+}
