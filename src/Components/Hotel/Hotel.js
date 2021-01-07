@@ -29,7 +29,7 @@ const Hotel = (props) => {
 
       {/* Hotel information column */}
       <Col className="hotel-info" md={6}>
-        <h6 className="mt-3">{hotelName}</h6>
+        <h5 className="mt-3">{hotelName}</h5>
         <p className="pt-3 text-secondary">
           {guests} guests, {bedrooms} bedrooms, {bed} beds
         </p>

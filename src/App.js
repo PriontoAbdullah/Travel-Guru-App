@@ -20,8 +20,6 @@ function App() {
 	const [ bookingInfo, setBookingInfo ] = useState({});
 	const [ selectedPlace, setSelectedPlace ] = useState({});
 
-	console.log(loggedInUser);
-
 	return (
 		<UserContext.Provider
 			value={{
