@@ -3,9 +3,11 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 import './App.css';
 import AvailableHotels from './Components/AvailableHotels/AvailableHotels';
 import Booking from './Components/Booking/Booking';
+import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
+import NotFound from './Components/NotFound/NotFound';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext();
@@ -48,8 +50,12 @@ function App() {
 					<PrivateRoute exact path="/availableHotels">
 						<AvailableHotels />
 					</PrivateRoute>
+					<Route path="*">
+						<NotFound />
+					</Route>
 				</Switch>
 			</div>
+			<Footer />
 		</UserContext.Provider>
 	);
 }

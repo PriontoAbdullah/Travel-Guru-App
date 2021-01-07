@@ -42,3 +42,7 @@
 .ml-auto.header-nav2.navbar-nav a:focus {
 	color: #fff;
 }
+
+.login-button {
+	margin-top: -5px;
+}
