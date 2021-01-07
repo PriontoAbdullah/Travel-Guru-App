@@ -46,7 +46,7 @@ const AvailableHotels = () => {
 					{!hotels.length ? (
 						<h3>No hotels are free</h3>
 					) : (
-						<div>
+						<div className="mb-5">
 							<h4>Stay in {selectedPlace.name}</h4>
 							<p>
 								<span className="font-weight-bold">From</span> {bookingInfo.from.toDateString()} <span className="font-weight-bold mr-1">To</span> 

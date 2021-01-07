@@ -1,5 +1,5 @@
 import { addDays } from 'date-fns';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Card, Col, Container, Jumbotron, Row } from 'react-bootstrap';
 import ReactDatePicker from 'react-datepicker';
 // importing datepicker css
@@ -12,7 +12,9 @@ import './Booking.css';
 
 const Booking = () => {
 	const { id } = useParams();
-	const { setBookingInfo, selectedPlace, setSelectedPlace } = useContext(UserContext);
+	const { setBookingInfo, selectedPlace,
+		setSelectedPlace, } = useContext(UserContext);
+	const [ selectedLocation, setSelectedLocation ] = useState({});
 
 	const history = useHistory();
 
@@ -24,6 +26,7 @@ const Booking = () => {
 		() => {
 			const bookingLocation = locations.find((location) => location.id.toString() === id);
 			setSelectedPlace(bookingLocation);
+			setSelectedLocation(bookingLocation);
 		},
 		[ id, setSelectedPlace ]
 	);
@@ -39,8 +42,8 @@ const Booking = () => {
 			<Row>
 				<Col sm={6} xl={6}>
 					<Jumbotron className="bg-transparent px-0">
-						<h1 className="font-weight-bold">{selectedPlace.name}</h1>
-						<p>{selectedPlace.description}</p>
+						<h1 className="font-weight-bold">{selectedLocation.name}</h1>
+						<p>{selectedLocation.description}</p>
 					</Jumbotron>
 				</Col>
 				<Col xl={1} />
@@ -64,7 +67,7 @@ const Booking = () => {
 										className="form-control mb-3"
 										placeholder="Destination"
 										readOnly
-										defaultValue={selectedPlace.name}
+										defaultValue={selectedLocation.name}
 										name="destination"
 										ref={register({ required: 'Destination required' })}
 									/>
